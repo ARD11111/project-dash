@@ -14,7 +14,9 @@ type Props = {
 
 const Project = ({ params }: Props) => {
 //   const { id } = params; //chatgpt
-  const { id } = use(params); 
+
+  const { id } = params;
+
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
