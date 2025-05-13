@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState , use} from "react";
+import React, { useState } from "react";
 import ProjectHeader from "@/app/projects/ProjectHeader";
 import Board from "../BoardView";
 import List from "../ListView";
@@ -13,10 +13,7 @@ type Props = {
 };
 
 const Project = ({ params }: Props) => {
-//   const { id } = params; //chatgpt
-
-  const { id } = params;
-
+  const { id } = params; // Directly use params from Next.js
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
@@ -28,7 +25,7 @@ const Project = ({ params }: Props) => {
         id={id}
       />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-       {activeTab === "Board" && (
+      {activeTab === "Board" && (
         <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
       {activeTab === "List" && (
@@ -37,12 +34,11 @@ const Project = ({ params }: Props) => {
       {activeTab === "Timeline" && (
         <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
-       {activeTab === "Table" && (
+      {activeTab === "Table" && (
         <Table id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
     </div>
   );
 };
-
 
 export default Project;
