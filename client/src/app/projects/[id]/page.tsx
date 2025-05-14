@@ -8,14 +8,15 @@ import Timeline from "../TimelineView";
 import Table from "../TableView";
 import ModalNewTask from "@/components/ModalNewTask";
 
-interface PageProps {
-  params: { 
-    id: string 
+// Type declaration that works with Next.js 15+ and Amplify
+type ProjectPageProps = {
+  params: {
+    id: string;
   };
-}
+};
 
-const Project = ({ params }: PageProps) => {
-  const { id } = params;
+const Project = (props: ProjectPageProps) => {
+  const { id } = props.params;
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
