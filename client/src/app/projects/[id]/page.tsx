@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState , use} from "react";
+import React, { useState } from "react";
 import ProjectHeader from "@/app/projects/ProjectHeader";
 import Board from "../BoardView";
 import List from "../ListView";
@@ -8,13 +8,14 @@ import Timeline from "../TimelineView";
 import Table from "../TableView";
 import ModalNewTask from "@/components/ModalNewTask";
 
-type Props = {
-  params: { id: string };
-};
+interface PageProps {
+  params: { 
+    id: string 
+  };
+}
 
-const Project = ({ params }: Props) => {
-//   const { id } = params; //chatgpt
-  const { id } = use(params); 
+const Project = ({ params }: PageProps) => {
+  const { id } = params;
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
@@ -26,7 +27,7 @@ const Project = ({ params }: Props) => {
         id={id}
       />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-       {activeTab === "Board" && (
+      {activeTab === "Board" && (
         <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
       {activeTab === "List" && (
@@ -35,12 +36,11 @@ const Project = ({ params }: Props) => {
       {activeTab === "Timeline" && (
         <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
-       {activeTab === "Table" && (
+      {activeTab === "Table" && (
         <Table id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
     </div>
   );
 };
-
 
 export default Project;
